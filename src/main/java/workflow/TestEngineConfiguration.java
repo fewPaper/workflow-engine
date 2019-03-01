@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.core.io.support.ResourcePatternResolver;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.util.StringUtils;
 
 import javax.sql.DataSource;
@@ -17,6 +18,7 @@ public class TestEngineConfiguration {
     protected DataSource dataSource;
     protected SqlSessionFactory sqlSessionFactory;
     protected SqlSession session;
+    protected DataSourceTransactionManager transactionManager;
     public static final String DEFAULT_MYBATIS_MAPPING_DIR = "classpath*:workflow/mapper/*Mapper2*.xml";
     private String typeAliasesPackage;
 
@@ -32,7 +34,8 @@ public class TestEngineConfiguration {
     public TestEngine buildTestEngine() {
         initSqlSessionFactory();
         session = sqlSessionFactory.openSession();
-        return new TestEngine(session);
+        transactionManager = new DataSourceTransactionManager(dataSource);
+        return new TestEngine(session,transactionManager);
     }
 
     //配置Session工厂
