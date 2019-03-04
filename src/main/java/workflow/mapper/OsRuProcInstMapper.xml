@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="dao.OsRuProcInstMapper" >
+  <resultMap id="BaseResultMap" type="workflow.po.OsRuProcInstPO" >
+    <constructor >
+      <idArg column="ID_" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="PROC_INST_ID_" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="BUSINESS_ID_" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="PROC_DEF_ID_" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="PROC_DEF_KEY_" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="PROC_DEF_NAME_" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="RES_PIC_ID_" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="RES_FILE_ID_" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="STEP_ID_" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="PROC_INST_NAME_" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="CREATE_TIME_" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="UPDATE_TIME_" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="SYS_CODE_" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="STATUS_" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID_, PROC_INST_ID_, BUSINESS_ID_, PROC_DEF_ID_, PROC_DEF_KEY_, PROC_DEF_NAME_, RES_PIC_ID_, 
+    RES_FILE_ID_, STEP_ID_, PROC_INST_NAME_, CREATE_TIME_, UPDATE_TIME_, SYS_CODE_, STATUS_
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from OS_RU_PROC_INST
+    where ID_ = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from OS_RU_PROC_INST
+    where ID_ = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="po.OsRuProcInstPO" >
+    insert into OS_RU_PROC_INST (ID_, PROC_INST_ID_, BUSINESS_ID_, 
+      PROC_DEF_ID_, PROC_DEF_KEY_, PROC_DEF_NAME_, 
+      RES_PIC_ID_, RES_FILE_ID_, STEP_ID_, 
+      PROC_INST_NAME_, CREATE_TIME_, UPDATE_TIME_, 
+      SYS_CODE_, STATUS_)
+    values (#{id,jdbcType=BIGINT}, #{procInstId,jdbcType=VARCHAR}, #{businessId,jdbcType=VARCHAR}, 
+      #{procDefId,jdbcType=VARCHAR}, #{procDefKey,jdbcType=VARCHAR}, #{procDefName,jdbcType=VARCHAR}, 
+      #{resPicId,jdbcType=VARCHAR}, #{resFileId,jdbcType=VARCHAR}, #{stepId,jdbcType=VARCHAR}, 
+      #{procInstName,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{sysCode,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="po.OsRuProcInstPO" >
+    insert into OS_RU_PROC_INST
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID_,
+      </if>
+      <if test="procInstId != null" >
+        PROC_INST_ID_,
+      </if>
+      <if test="businessId != null" >
+        BUSINESS_ID_,
+      </if>
+      <if test="procDefId != null" >
+        PROC_DEF_ID_,
+      </if>
+      <if test="procDefKey != null" >
+        PROC_DEF_KEY_,
+      </if>
+      <if test="procDefName != null" >
+        PROC_DEF_NAME_,
+      </if>
+      <if test="resPicId != null" >
+        RES_PIC_ID_,
+      </if>
+      <if test="resFileId != null" >
+        RES_FILE_ID_,
+      </if>
+      <if test="stepId != null" >
+        STEP_ID_,
+      </if>
+      <if test="procInstName != null" >
+        PROC_INST_NAME_,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME_,
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME_,
+      </if>
+      <if test="sysCode != null" >
+        SYS_CODE_,
+      </if>
+      <if test="status != null" >
+        STATUS_,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="procInstId != null" >
+        #{procInstId,jdbcType=VARCHAR},
+      </if>
+      <if test="businessId != null" >
+        #{businessId,jdbcType=VARCHAR},
+      </if>
+      <if test="procDefId != null" >
+        #{procDefId,jdbcType=VARCHAR},
+      </if>
+      <if test="procDefKey != null" >
+        #{procDefKey,jdbcType=VARCHAR},
+      </if>
+      <if test="procDefName != null" >
+        #{procDefName,jdbcType=VARCHAR},
+      </if>
+      <if test="resPicId != null" >
+        #{resPicId,jdbcType=VARCHAR},
+      </if>
+      <if test="resFileId != null" >
+        #{resFileId,jdbcType=VARCHAR},
+      </if>
+      <if test="stepId != null" >
+        #{stepId,jdbcType=VARCHAR},
+      </if>
+      <if test="procInstName != null" >
+        #{procInstName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sysCode != null" >
+        #{sysCode,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="po.OsRuProcInstPO" >
+    update OS_RU_PROC_INST
+    <set >
+      <if test="procInstId != null" >
+        PROC_INST_ID_ = #{procInstId,jdbcType=VARCHAR},
+      </if>
+      <if test="businessId != null" >
+        BUSINESS_ID_ = #{businessId,jdbcType=VARCHAR},
+      </if>
+      <if test="procDefId != null" >
+        PROC_DEF_ID_ = #{procDefId,jdbcType=VARCHAR},
+      </if>
+      <if test="procDefKey != null" >
+        PROC_DEF_KEY_ = #{procDefKey,jdbcType=VARCHAR},
+      </if>
+      <if test="procDefName != null" >
+        PROC_DEF_NAME_ = #{procDefName,jdbcType=VARCHAR},
+      </if>
+      <if test="resPicId != null" >
+        RES_PIC_ID_ = #{resPicId,jdbcType=VARCHAR},
+      </if>
+      <if test="resFileId != null" >
+        RES_FILE_ID_ = #{resFileId,jdbcType=VARCHAR},
+      </if>
+      <if test="stepId != null" >
+        STEP_ID_ = #{stepId,jdbcType=VARCHAR},
+      </if>
+      <if test="procInstName != null" >
+        PROC_INST_NAME_ = #{procInstName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME_ = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME_ = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sysCode != null" >
+        SYS_CODE_ = #{sysCode,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        STATUS_ = #{status,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID_ = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="po.OsRuProcInstPO" >
+    update OS_RU_PROC_INST
+    set PROC_INST_ID_ = #{procInstId,jdbcType=VARCHAR},
+      BUSINESS_ID_ = #{businessId,jdbcType=VARCHAR},
+      PROC_DEF_ID_ = #{procDefId,jdbcType=VARCHAR},
+      PROC_DEF_KEY_ = #{procDefKey,jdbcType=VARCHAR},
+      PROC_DEF_NAME_ = #{procDefName,jdbcType=VARCHAR},
+      RES_PIC_ID_ = #{resPicId,jdbcType=VARCHAR},
+      RES_FILE_ID_ = #{resFileId,jdbcType=VARCHAR},
+      STEP_ID_ = #{stepId,jdbcType=VARCHAR},
+      PROC_INST_NAME_ = #{procInstName,jdbcType=VARCHAR},
+      CREATE_TIME_ = #{createTime,jdbcType=TIMESTAMP},
+      UPDATE_TIME_ = #{updateTime,jdbcType=TIMESTAMP},
+      SYS_CODE_ = #{sysCode,jdbcType=VARCHAR},
+      STATUS_ = #{status,jdbcType=VARCHAR}
+    where ID_ = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

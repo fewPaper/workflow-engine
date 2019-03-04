@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="dao.OsReModelMapper" >
+  <resultMap id="BaseResultMap" type="workflow.po.OsReModelPO" >
+    <constructor >
+      <idArg column="ID_" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="MODEL_ID_" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="MODEL_NAME_" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="MODEL_VER_" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="RES_PIC_ID_" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="RES_FILE_ID_" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="PROC_DEF_ID_" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="CREATE_TIME_" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="UPDATE_TIME_" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="SYS_CODE_" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="MODEL_DESC_" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID_, MODEL_ID_, MODEL_NAME_, MODEL_VER_, RES_PIC_ID_, RES_FILE_ID_, PROC_DEF_ID_, 
+    CREATE_TIME_, UPDATE_TIME_, SYS_CODE_, MODEL_DESC_
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from OS_RE_MODEL
+    where ID_ = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from OS_RE_MODEL
+    where ID_ = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="po.OsReModelPO" >
+    insert into OS_RE_MODEL (ID_, MODEL_ID_, MODEL_NAME_, 
+      MODEL_VER_, RES_PIC_ID_, RES_FILE_ID_, 
+      PROC_DEF_ID_, CREATE_TIME_, UPDATE_TIME_, 
+      SYS_CODE_, MODEL_DESC_)
+    values (#{id,jdbcType=BIGINT}, #{modelId,jdbcType=VARCHAR}, #{modelName,jdbcType=VARCHAR}, 
+      #{modelVer,jdbcType=INTEGER}, #{resPicId,jdbcType=VARCHAR}, #{resFileId,jdbcType=VARCHAR}, 
+      #{procDefId,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{sysCode,jdbcType=VARCHAR}, #{modelDesc,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="po.OsReModelPO" >
+    insert into OS_RE_MODEL
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID_,
+      </if>
+      <if test="modelId != null" >
+        MODEL_ID_,
+      </if>
+      <if test="modelName != null" >
+        MODEL_NAME_,
+      </if>
+      <if test="modelVer != null" >
+        MODEL_VER_,
+      </if>
+      <if test="resPicId != null" >
+        RES_PIC_ID_,
+      </if>
+      <if test="resFileId != null" >
+        RES_FILE_ID_,
+      </if>
+      <if test="procDefId != null" >
+        PROC_DEF_ID_,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME_,
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME_,
+      </if>
+      <if test="sysCode != null" >
+        SYS_CODE_,
+      </if>
+      <if test="modelDesc != null" >
+        MODEL_DESC_,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="modelId != null" >
+        #{modelId,jdbcType=VARCHAR},
+      </if>
+      <if test="modelName != null" >
+        #{modelName,jdbcType=VARCHAR},
+      </if>
+      <if test="modelVer != null" >
+        #{modelVer,jdbcType=INTEGER},
+      </if>
+      <if test="resPicId != null" >
+        #{resPicId,jdbcType=VARCHAR},
+      </if>
+      <if test="resFileId != null" >
+        #{resFileId,jdbcType=VARCHAR},
+      </if>
+      <if test="procDefId != null" >
+        #{procDefId,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sysCode != null" >
+        #{sysCode,jdbcType=VARCHAR},
+      </if>
+      <if test="modelDesc != null" >
+        #{modelDesc,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="po.OsReModelPO" >
+    update OS_RE_MODEL
+    <set >
+      <if test="modelId != null" >
+        MODEL_ID_ = #{modelId,jdbcType=VARCHAR},
+      </if>
+      <if test="modelName != null" >
+        MODEL_NAME_ = #{modelName,jdbcType=VARCHAR},
+      </if>
+      <if test="modelVer != null" >
+        MODEL_VER_ = #{modelVer,jdbcType=INTEGER},
+      </if>
+      <if test="resPicId != null" >
+        RES_PIC_ID_ = #{resPicId,jdbcType=VARCHAR},
+      </if>
+      <if test="resFileId != null" >
+        RES_FILE_ID_ = #{resFileId,jdbcType=VARCHAR},
+      </if>
+      <if test="procDefId != null" >
+        PROC_DEF_ID_ = #{procDefId,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME_ = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME_ = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sysCode != null" >
+        SYS_CODE_ = #{sysCode,jdbcType=VARCHAR},
+      </if>
+      <if test="modelDesc != null" >
+        MODEL_DESC_ = #{modelDesc,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID_ = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="po.OsReModelPO" >
+    update OS_RE_MODEL
+    set MODEL_ID_ = #{modelId,jdbcType=VARCHAR},
+      MODEL_NAME_ = #{modelName,jdbcType=VARCHAR},
+      MODEL_VER_ = #{modelVer,jdbcType=INTEGER},
+      RES_PIC_ID_ = #{resPicId,jdbcType=VARCHAR},
+      RES_FILE_ID_ = #{resFileId,jdbcType=VARCHAR},
+      PROC_DEF_ID_ = #{procDefId,jdbcType=VARCHAR},
+      CREATE_TIME_ = #{createTime,jdbcType=TIMESTAMP},
+      UPDATE_TIME_ = #{updateTime,jdbcType=TIMESTAMP},
+      SYS_CODE_ = #{sysCode,jdbcType=VARCHAR},
+      MODEL_DESC_ = #{modelDesc,jdbcType=VARCHAR}
+    where ID_ = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

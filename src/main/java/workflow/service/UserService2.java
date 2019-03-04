@@ -5,10 +5,9 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.TransactionDefinition;
 import org.springframework.transaction.TransactionStatus;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.support.DefaultTransactionDefinition;
 import workflow.dao.UserMapper2;
-import workflow.entity.User2;
+import workflow.po.User2;
 
 import java.util.List;
 

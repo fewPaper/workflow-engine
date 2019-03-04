@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="dao.OsHiStepMapper" >
+  <resultMap id="BaseResultMap" type="workflow.po.OsHiStepPO" >
+    <constructor >
+      <idArg column="ID_" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="PROC_INST_ID_" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="STEP_INST_ID_" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="STEP_ID_" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="STEP_NAME_" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="STEP_DESC_" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="OWNER_" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ASSIGNEE_" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="PROC_DEF_ID_" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="PROC_DEF_KEY_" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="PROC_DEF_NAME_" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="DUE_TIME_" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="CREATE_TIME_" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="SYS_CODE_" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="FINISH_TYPE_" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="FINISH_TIME_" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID_, PROC_INST_ID_, STEP_INST_ID_, STEP_ID_, STEP_NAME_, STEP_DESC_, OWNER_, ASSIGNEE_, 
+    PROC_DEF_ID_, PROC_DEF_KEY_, PROC_DEF_NAME_, DUE_TIME_, CREATE_TIME_, SYS_CODE_, 
+    FINISH_TYPE_, FINISH_TIME_
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from OS_HI_STEP
+    where ID_ = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from OS_HI_STEP
+    where ID_ = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="po.OsHiStepPO" >
+    insert into OS_HI_STEP (ID_, PROC_INST_ID_, STEP_INST_ID_, 
+      STEP_ID_, STEP_NAME_, STEP_DESC_, 
+      OWNER_, ASSIGNEE_, PROC_DEF_ID_, 
+      PROC_DEF_KEY_, PROC_DEF_NAME_, DUE_TIME_, 
+      CREATE_TIME_, SYS_CODE_, FINISH_TYPE_, 
+      FINISH_TIME_)
+    values (#{id,jdbcType=BIGINT}, #{procInstId,jdbcType=VARCHAR}, #{stepInstId,jdbcType=VARCHAR}, 
+      #{stepId,jdbcType=VARCHAR}, #{stepName,jdbcType=VARCHAR}, #{stepDesc,jdbcType=VARCHAR}, 
+      #{owner,jdbcType=VARCHAR}, #{assignee,jdbcType=VARCHAR}, #{procDefId,jdbcType=VARCHAR}, 
+      #{procDefKey,jdbcType=VARCHAR}, #{procDefName,jdbcType=VARCHAR}, #{dueTime,jdbcType=TIMESTAMP}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{sysCode,jdbcType=VARCHAR}, #{finishType,jdbcType=VARCHAR}, 
+      #{finishTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="po.OsHiStepPO" >
+    insert into OS_HI_STEP
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID_,
+      </if>
+      <if test="procInstId != null" >
+        PROC_INST_ID_,
+      </if>
+      <if test="stepInstId != null" >
+        STEP_INST_ID_,
+      </if>
+      <if test="stepId != null" >
+        STEP_ID_,
+      </if>
+      <if test="stepName != null" >
+        STEP_NAME_,
+      </if>
+      <if test="stepDesc != null" >
+        STEP_DESC_,
+      </if>
+      <if test="owner != null" >
+        OWNER_,
+      </if>
+      <if test="assignee != null" >
+        ASSIGNEE_,
+      </if>
+      <if test="procDefId != null" >
+        PROC_DEF_ID_,
+      </if>
+      <if test="procDefKey != null" >
+        PROC_DEF_KEY_,
+      </if>
+      <if test="procDefName != null" >
+        PROC_DEF_NAME_,
+      </if>
+      <if test="dueTime != null" >
+        DUE_TIME_,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME_,
+      </if>
+      <if test="sysCode != null" >
+        SYS_CODE_,
+      </if>
+      <if test="finishType != null" >
+        FINISH_TYPE_,
+      </if>
+      <if test="finishTime != null" >
+        FINISH_TIME_,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="procInstId != null" >
+        #{procInstId,jdbcType=VARCHAR},
+      </if>
+      <if test="stepInstId != null" >
+        #{stepInstId,jdbcType=VARCHAR},
+      </if>
+      <if test="stepId != null" >
+        #{stepId,jdbcType=VARCHAR},
+      </if>
+      <if test="stepName != null" >
+        #{stepName,jdbcType=VARCHAR},
+      </if>
+      <if test="stepDesc != null" >
+        #{stepDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="owner != null" >
+        #{owner,jdbcType=VARCHAR},
+      </if>
+      <if test="assignee != null" >
+        #{assignee,jdbcType=VARCHAR},
+      </if>
+      <if test="procDefId != null" >
+        #{procDefId,jdbcType=VARCHAR},
+      </if>
+      <if test="procDefKey != null" >
+        #{procDefKey,jdbcType=VARCHAR},
+      </if>
+      <if test="procDefName != null" >
+        #{procDefName,jdbcType=VARCHAR},
+      </if>
+      <if test="dueTime != null" >
+        #{dueTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sysCode != null" >
+        #{sysCode,jdbcType=VARCHAR},
+      </if>
+      <if test="finishType != null" >
+        #{finishType,jdbcType=VARCHAR},
+      </if>
+      <if test="finishTime != null" >
+        #{finishTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="po.OsHiStepPO" >
+    update OS_HI_STEP
+    <set >
+      <if test="procInstId != null" >
+        PROC_INST_ID_ = #{procInstId,jdbcType=VARCHAR},
+      </if>
+      <if test="stepInstId != null" >
+        STEP_INST_ID_ = #{stepInstId,jdbcType=VARCHAR},
+      </if>
+      <if test="stepId != null" >
+        STEP_ID_ = #{stepId,jdbcType=VARCHAR},
+      </if>
+      <if test="stepName != null" >
+        STEP_NAME_ = #{stepName,jdbcType=VARCHAR},
+      </if>
+      <if test="stepDesc != null" >
+        STEP_DESC_ = #{stepDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="owner != null" >
+        OWNER_ = #{owner,jdbcType=VARCHAR},
+      </if>
+      <if test="assignee != null" >
+        ASSIGNEE_ = #{assignee,jdbcType=VARCHAR},
+      </if>
+      <if test="procDefId != null" >
+        PROC_DEF_ID_ = #{procDefId,jdbcType=VARCHAR},
+      </if>
+      <if test="procDefKey != null" >
+        PROC_DEF_KEY_ = #{procDefKey,jdbcType=VARCHAR},
+      </if>
+      <if test="procDefName != null" >
+        PROC_DEF_NAME_ = #{procDefName,jdbcType=VARCHAR},
+      </if>
+      <if test="dueTime != null" >
+        DUE_TIME_ = #{dueTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME_ = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sysCode != null" >
+        SYS_CODE_ = #{sysCode,jdbcType=VARCHAR},
+      </if>
+      <if test="finishType != null" >
+        FINISH_TYPE_ = #{finishType,jdbcType=VARCHAR},
+      </if>
+      <if test="finishTime != null" >
+        FINISH_TIME_ = #{finishTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID_ = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="po.OsHiStepPO" >
+    update OS_HI_STEP
+    set PROC_INST_ID_ = #{procInstId,jdbcType=VARCHAR},
+      STEP_INST_ID_ = #{stepInstId,jdbcType=VARCHAR},
+      STEP_ID_ = #{stepId,jdbcType=VARCHAR},
+      STEP_NAME_ = #{stepName,jdbcType=VARCHAR},
+      STEP_DESC_ = #{stepDesc,jdbcType=VARCHAR},
+      OWNER_ = #{owner,jdbcType=VARCHAR},
+      ASSIGNEE_ = #{assignee,jdbcType=VARCHAR},
+      PROC_DEF_ID_ = #{procDefId,jdbcType=VARCHAR},
+      PROC_DEF_KEY_ = #{procDefKey,jdbcType=VARCHAR},
+      PROC_DEF_NAME_ = #{procDefName,jdbcType=VARCHAR},
+      DUE_TIME_ = #{dueTime,jdbcType=TIMESTAMP},
+      CREATE_TIME_ = #{createTime,jdbcType=TIMESTAMP},
+      SYS_CODE_ = #{sysCode,jdbcType=VARCHAR},
+      FINISH_TYPE_ = #{finishType,jdbcType=VARCHAR},
+      FINISH_TIME_ = #{finishTime,jdbcType=TIMESTAMP}
+    where ID_ = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

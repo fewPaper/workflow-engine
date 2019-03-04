@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="dao.OsHiIndentitylinkMapper" >
+  <resultMap id="BaseResultMap" type="workflow.po.OsHiIndentitylinkPO" >
+
+    <constructor >
+      <idArg column="ID_" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="PROC_INST_ID_" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="STEP_INST_ID_" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="STEP_ID_" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="USER_ID_" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="USER_TYPE_" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="SYS_CODE_" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID_, PROC_INST_ID_, STEP_INST_ID_, STEP_ID_, USER_ID_, USER_TYPE_, SYS_CODE_
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+
+    select 
+    <include refid="Base_Column_List" />
+    from OS_HI_INDENTITYLINK
+    where ID_ = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from OS_HI_INDENTITYLINK
+    where ID_ = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="po.OsHiIndentitylinkPO" >
+    insert into OS_HI_INDENTITYLINK (ID_, PROC_INST_ID_, STEP_INST_ID_, 
+      STEP_ID_, USER_ID_, USER_TYPE_, 
+      SYS_CODE_)
+    values (#{id,jdbcType=BIGINT}, #{procInstId,jdbcType=VARCHAR}, #{stepInstId,jdbcType=VARCHAR}, 
+      #{stepId,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{userType,jdbcType=VARCHAR}, 
+      #{sysCode,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="po.OsHiIndentitylinkPO" >
+    insert into OS_HI_INDENTITYLINK
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID_,
+      </if>
+      <if test="procInstId != null" >
+        PROC_INST_ID_,
+      </if>
+      <if test="stepInstId != null" >
+        STEP_INST_ID_,
+      </if>
+      <if test="stepId != null" >
+        STEP_ID_,
+      </if>
+      <if test="userId != null" >
+        USER_ID_,
+      </if>
+      <if test="userType != null" >
+        USER_TYPE_,
+      </if>
+      <if test="sysCode != null" >
+        SYS_CODE_,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="procInstId != null" >
+        #{procInstId,jdbcType=VARCHAR},
+      </if>
+      <if test="stepInstId != null" >
+        #{stepInstId,jdbcType=VARCHAR},
+      </if>
+      <if test="stepId != null" >
+        #{stepId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="userType != null" >
+        #{userType,jdbcType=VARCHAR},
+      </if>
+      <if test="sysCode != null" >
+        #{sysCode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="po.OsHiIndentitylinkPO" >
+    update OS_HI_INDENTITYLINK
+    <set >
+      <if test="procInstId != null" >
+        PROC_INST_ID_ = #{procInstId,jdbcType=VARCHAR},
+      </if>
+      <if test="stepInstId != null" >
+        STEP_INST_ID_ = #{stepInstId,jdbcType=VARCHAR},
+      </if>
+      <if test="stepId != null" >
+        STEP_ID_ = #{stepId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        USER_ID_ = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="userType != null" >
+        USER_TYPE_ = #{userType,jdbcType=VARCHAR},
+      </if>
+      <if test="sysCode != null" >
+        SYS_CODE_ = #{sysCode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID_ = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="po.OsHiIndentitylinkPO" >
+    update OS_HI_INDENTITYLINK
+    set PROC_INST_ID_ = #{procInstId,jdbcType=VARCHAR},
+      STEP_INST_ID_ = #{stepInstId,jdbcType=VARCHAR},
+      STEP_ID_ = #{stepId,jdbcType=VARCHAR},
+      USER_ID_ = #{userId,jdbcType=VARCHAR},
+      USER_TYPE_ = #{userType,jdbcType=VARCHAR},
+      SYS_CODE_ = #{sysCode,jdbcType=VARCHAR}
+    where ID_ = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

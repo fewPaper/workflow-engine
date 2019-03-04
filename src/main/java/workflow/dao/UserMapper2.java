@@ -1,6 +1,6 @@
 package workflow.dao;
 
-import workflow.entity.User2;
+import workflow.po.User2;
 
 import java.util.List;
 

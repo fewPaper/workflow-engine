@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="dao.OsRuVariableMapper" >
+  <resultMap id="BaseResultMap" type="workflow.po.OsRuVariablePO" >
+    <constructor >
+      <idArg column="ID_" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="PROC_INST_ID_" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="STEP_INST_ID_" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="STEP_ID_" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="PARAM_DESC_" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="PARAM_NAME_" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="PARAM_VALUE_" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="PARAM_TYPE_" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="SYS_CODE_" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID_, PROC_INST_ID_, STEP_INST_ID_, STEP_ID_, PARAM_DESC_, PARAM_NAME_, PARAM_VALUE_, 
+    PARAM_TYPE_, SYS_CODE_
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from OS_RU_VARIABLE
+    where ID_ = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from OS_RU_VARIABLE
+    where ID_ = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="po.OsRuVariablePO" >
+    insert into OS_RU_VARIABLE (ID_, PROC_INST_ID_, STEP_INST_ID_, 
+      STEP_ID_, PARAM_DESC_, PARAM_NAME_, 
+      PARAM_VALUE_, PARAM_TYPE_, SYS_CODE_
+      )
+    values (#{id,jdbcType=BIGINT}, #{procInstId,jdbcType=VARCHAR}, #{stepInstId,jdbcType=VARCHAR}, 
+      #{stepId,jdbcType=VARCHAR}, #{paramDesc,jdbcType=VARCHAR}, #{paramName,jdbcType=VARCHAR}, 
+      #{paramValue,jdbcType=VARCHAR}, #{paramType,jdbcType=VARCHAR}, #{sysCode,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="po.OsRuVariablePO" >
+    insert into OS_RU_VARIABLE
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID_,
+      </if>
+      <if test="procInstId != null" >
+        PROC_INST_ID_,
+      </if>
+      <if test="stepInstId != null" >
+        STEP_INST_ID_,
+      </if>
+      <if test="stepId != null" >
+        STEP_ID_,
+      </if>
+      <if test="paramDesc != null" >
+        PARAM_DESC_,
+      </if>
+      <if test="paramName != null" >
+        PARAM_NAME_,
+      </if>
+      <if test="paramValue != null" >
+        PARAM_VALUE_,
+      </if>
+      <if test="paramType != null" >
+        PARAM_TYPE_,
+      </if>
+      <if test="sysCode != null" >
+        SYS_CODE_,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="procInstId != null" >
+        #{procInstId,jdbcType=VARCHAR},
+      </if>
+      <if test="stepInstId != null" >
+        #{stepInstId,jdbcType=VARCHAR},
+      </if>
+      <if test="stepId != null" >
+        #{stepId,jdbcType=VARCHAR},
+      </if>
+      <if test="paramDesc != null" >
+        #{paramDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="paramName != null" >
+        #{paramName,jdbcType=VARCHAR},
+      </if>
+      <if test="paramValue != null" >
+        #{paramValue,jdbcType=VARCHAR},
+      </if>
+      <if test="paramType != null" >
+        #{paramType,jdbcType=VARCHAR},
+      </if>
+      <if test="sysCode != null" >
+        #{sysCode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="po.OsRuVariablePO" >
+    update OS_RU_VARIABLE
+    <set >
+      <if test="procInstId != null" >
+        PROC_INST_ID_ = #{procInstId,jdbcType=VARCHAR},
+      </if>
+      <if test="stepInstId != null" >
+        STEP_INST_ID_ = #{stepInstId,jdbcType=VARCHAR},
+      </if>
+      <if test="stepId != null" >
+        STEP_ID_ = #{stepId,jdbcType=VARCHAR},
+      </if>
+      <if test="paramDesc != null" >
+        PARAM_DESC_ = #{paramDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="paramName != null" >
+        PARAM_NAME_ = #{paramName,jdbcType=VARCHAR},
+      </if>
+      <if test="paramValue != null" >
+        PARAM_VALUE_ = #{paramValue,jdbcType=VARCHAR},
+      </if>
+      <if test="paramType != null" >
+        PARAM_TYPE_ = #{paramType,jdbcType=VARCHAR},
+      </if>
+      <if test="sysCode != null" >
+        SYS_CODE_ = #{sysCode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID_ = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="po.OsRuVariablePO" >
+    update OS_RU_VARIABLE
+    set PROC_INST_ID_ = #{procInstId,jdbcType=VARCHAR},
+      STEP_INST_ID_ = #{stepInstId,jdbcType=VARCHAR},
+      STEP_ID_ = #{stepId,jdbcType=VARCHAR},
+      PARAM_DESC_ = #{paramDesc,jdbcType=VARCHAR},
+      PARAM_NAME_ = #{paramName,jdbcType=VARCHAR},
+      PARAM_VALUE_ = #{paramValue,jdbcType=VARCHAR},
+      PARAM_TYPE_ = #{paramType,jdbcType=VARCHAR},
+      SYS_CODE_ = #{sysCode,jdbcType=VARCHAR}
+    where ID_ = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

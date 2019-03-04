@@ -1,4 +1,4 @@
-package workflow.entity;
+package workflow.po;
 
 public class User2 {
     /**
